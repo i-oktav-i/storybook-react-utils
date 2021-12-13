@@ -1,0 +1,8 @@
+# Еhe following two lines are needed to include
+# files and folders whose name begins with a dot
+*
+!*
+
+build
+node_modules
+storybook-static
