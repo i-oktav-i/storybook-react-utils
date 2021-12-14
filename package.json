@@ -26,6 +26,9 @@
     "url": "https://github.com/i-oktav-i/storybook-react-utils.git"
   },
   "homepage": "https://github.com/i-oktav-i/storybook-react-utils.git",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@types/react": "^17.0.37",
