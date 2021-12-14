@@ -23,7 +23,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "sourceMap": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strictNullChecks": true,
     "declaration": true
   },
