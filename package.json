@@ -4,7 +4,8 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "patch": "V=$(npm version patch); git push; git push origin ${V}"
   },
   "author": "Taranenko Andrei <i_oktav_i@mail.ru>",
   "license": "ISC",
