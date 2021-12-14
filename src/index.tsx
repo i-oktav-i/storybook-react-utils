@@ -208,17 +208,3 @@ export function compose<P1 extends UnknownObj, P2 extends UnknownObj, P3 extends
   };
 }
 /* eslint-enable max-len */
-
-type A = { a: boolean }
-
-const setIsMobile = (value: A) => ({ payload: value });
-
-export const qwe = getStorePropertyWrapper('isMobile', setIsMobile, { a: false });
-
-const setIsFDK = (value: boolean) => ({ payload: value });
-
-export const qwe1 = getStorePropertyWrapper('isFDK', setIsFDK, false);
-
-const setSome = (value: '1'|'2'|'3') => ({ payload: value });
-
-export const qw = getStorePropertyWrapper('isMobile', setSome, '1');
