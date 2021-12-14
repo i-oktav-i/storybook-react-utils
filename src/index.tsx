@@ -134,41 +134,43 @@ export const getStorePropertyWrapper = <
   };
 
 type ContainerProps = {
-  width: number,
-  height: number,
-  styles?: CSSProperties
+  containerWidth: number,
+  containerHeight: number,
+  containerStyles?: CSSProperties
 }
 
 export const containerWrapperArgTypes: StoryArgTypes<ContainerProps> = {
-  width: {
+  containerWidth: {
     defaultValue: 300,
     control:      {
       type: 'range',
       min:  0,
       max:  1000,
     },
+    description: 'Not component property',
   },
-  height: {
+  containerHeight: {
     defaultValue: 200,
     control:      {
       type: 'range',
       min:  0,
       max:  1000,
     },
+    description: 'Not component property',
   },
-  styles: {
+  containerStyles: {
     table: { disable: true },
   },
 };
 export const containerWrapper: Wrapper<ContainerProps> = Elem => props => {
-  const { width, height, styles = {} } = props;
+  const { containerWidth, containerHeight, containerStyles = {} } = props;
 
   return (
     <div
       style={{
-        width:  width || 'auto',
-        height: height || 'auto',
-        ...styles,
+        width:  containerWidth || 'auto',
+        height: containerHeight || 'auto',
+        ...containerStyles,
       }}
     >
       <Elem {...props} />

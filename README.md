@@ -66,8 +66,8 @@ storybook-react-utils provides one story wrapper and wrappers creator for dispat
 
 ### `containerWrapper`
 
-Provides `width` and `height` story controls for stretchable components.   
-Сan also get the `style` prop
+Provides `containerWidth` and `containerHeight` story controls for stretchable components.   
+Сan also get the `containerStyles` prop
 
 ```ts
 import {
@@ -84,23 +84,25 @@ const getStory = getStoryCreator(wrapped, {
   argsTypes: {
     ...containerWrapperArgTypes, /* Default wrapper controls config */
     /* Equals to
-    width: {
+    containerWidth: {
       defaultValue: 300,
       control:      {
         type: 'range',
-        min:  0, // 0 === 'auto'
+        min:  0,
         max:  1000,
       },
+      description: 'Not component property',
     },
-    height: {
+    containerHeight: {
       defaultValue: 200,
       control:      {
         type: 'range',
-        min:  0, // 0 === 'auto'
+        min:  0,
         max:  1000,
       },
+      description: 'Not component property',
     },
-    styles: {
+    containerStyles: {
       table: { disable: true },
     }, */
   }
