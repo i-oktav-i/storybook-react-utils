@@ -54,7 +54,7 @@ interface ControlsOptions extends Record<ControlsTypes, UnknownObj> {
   date: FileOptions
 }
 
-type ArgsTypesControl = ({
+export type ArgsTypesControl = ({
   [k in ControlsTypes]: {
     type: k
   } & ControlsOptions[k]

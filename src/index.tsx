@@ -15,6 +15,7 @@ import {
   StoryArgTypes,
   StoryConf,
   Wrapper,
+  ArgsTypesControl,
 } from './types';
 
 export type { Wrapper };
@@ -177,6 +178,32 @@ export const containerWrapper: Wrapper<ContainerProps> = Elem => props => {
     </div>
   );
 };
+
+type CssVar = `--${string}`
+
+export const getCssVarWrapper = <
+  F extends CssVar,
+  Props extends UnknownObj = { [p in F]: string }
+  >(
+    name: F,
+    control: ArgsTypesControl = { type: 'text' },
+  ): [Wrapper<Props>, StoryArgTypes<Props>] => [
+    Elem => props => {
+      const { [name]: value } = props;
+
+      return (
+        <div style={{
+          [name]: value,
+        }}
+        >
+          <Elem {...props} />
+        </div>
+      );
+    },
+    {
+      [name]: { control },
+    } as StoryArgTypes<Props>,
+  ];
 
 /* eslint-disable max-len */
 export function compose<P1 extends UnknownObj>(w1: Wrapper<P1>): Wrapper<P1>

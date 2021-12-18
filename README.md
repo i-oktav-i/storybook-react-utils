@@ -1,6 +1,12 @@
 # storybook-react-utils
 
-Provides story creator with enhanced typings, story Wrapper type, wrapper creator for Redux/Redux-thunk store action dispatching and wrappers composer.
+This package provides:
+* story creator with enhanced typings
+* story Wrapper type
+* [wrapper](#containerWrapper) for stretchable components
+* [wrapper creator](#getStorePropertyWrapper) for Redux/Redux-thunk store action dispatching
+* wrapper for css variables managing
+* wrappers [composer](#compose).
 
 TS is not required
 
@@ -39,7 +45,7 @@ const getStory = getStoryCreator(
     args: {
       /* default args */
     },
-    argsTypes: {
+    argTypes: {
       /* default args types */
     },
     /* ... Other story and stories plugins attributes */
@@ -64,7 +70,10 @@ export const AnotherComponentStory = getStory({
 
 storybook-react-utils provides one story wrapper and wrappers creator for dispatching store actions with story controls
 
-### `containerWrapper`
+
+<h3 id="containerWrapper">
+  <code>containerWrapper</code>
+</h3>
 
 Provides `containerWidth` and `containerHeight` story controls for stretchable components.   
 Сan also get the `containerStyles` prop
@@ -81,7 +90,7 @@ import { Component } from './Component';
 const wrapped = containerWrapper(Component)
 
 const getStory = getStoryCreator(wrapped, {
-  argsTypes: {
+  argTypes: {
     ...containerWrapperArgTypes, /* Default wrapper controls config */
     /* Equals to
     containerWidth: {
@@ -108,7 +117,10 @@ const getStory = getStoryCreator(wrapped, {
   }
 });
 ```
-### `getStorePropertyWrapper`
+
+<h3 id="getStorePropertyWrapper">
+  <code>getStorePropertyWrapper</code>
+</h3>
 
 Creates a wrapper with which you can change the store state
 
@@ -123,7 +135,40 @@ const isMobile = getStorePropertyWrapper(
 
 ```
 
-### `compose`
+<h3 id="getCssVarWrapper">
+  <code>getCssVarWrapper</code>
+</h3>
+
+getCssVarWrapper creates wrapper and argsTypes for css variable. By default controls type is `{type: 'text'}`, another control config can be provided with second argument
+
+```ts
+import {
+  getCssVarWrapper,
+  getStoryCreator,
+} from 'storybook-react-utils';
+import { Component } from './Component';
+
+const [paddingWrapper, paddingWrapperArgType] = getCssVarWrapper('--my-padding-var'/*, {
+  type: 'range',
+  min: 1,
+  max: 3,
+  step: 1,
+}*/);
+
+const wrapped = paddingWrapper(Component)
+
+const getStory = getStoryCreator(wrapped, {
+  argType: {
+    ...paddingWrapperArgType,
+  },
+});
+
+```
+
+<h3 id="compose">
+  <code>compose</code>
+</h3>
+
 
 This function compose wrappers into one
 
