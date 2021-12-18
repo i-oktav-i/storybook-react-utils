@@ -16,6 +16,50 @@ export type MergeUnion<Union extends UnknownObj> = {
   [k in AllKeys<Union>]: PickType<Union, k>;
 }
 
+export type ControlsTypes =
+  'boolean' |
+  'number' |
+  'range' |
+  'object' |
+  'array' |
+  'file' |
+  'radio' |
+  'inline-radio' |
+  'check' |
+  'inline-check' |
+  'select' |
+  'multi-select' |
+  'text' |
+  'color' |
+  'date'
+
+type NumbersOptions = {
+  min?: number
+  max?: number
+  step?: number
+}
+
+type ColorOptions = {
+  presetColors?: (string | {color: string, title: string})[]
+}
+
+type FileOptions = {
+  accept: string | string[]
+}
+
+interface ControlsOptions extends Record<ControlsTypes, UnknownObj> {
+  number: NumbersOptions
+  range: NumbersOptions
+  color: ColorOptions
+  date: FileOptions
+}
+
+type ArgsTypesControl = ({
+  [k in ControlsTypes]: {
+    type: k
+  } & ControlsOptions[k]
+})[ControlsTypes]
+
 /* Provides typings for controls field in story Parameters property */
 export type StoryParams<ComponentProps extends UnknownObj> = {
   controls?: {
@@ -29,10 +73,7 @@ export type StoryParams<ComponentProps extends UnknownObj> = {
 export type StoryArgTypes<ComponentProps extends UnknownObj> = {
   [prop in keyof ComponentProps]?: ArgsTypes[string] & {
     defaultValue?: ComponentProps[prop]
-    control?: {
-      type?: null | string
-      [x: string]: unknown
-    }
+    control?: ArgsTypesControl
     table?: {
       disable?: boolean
       [x: string]: unknown
