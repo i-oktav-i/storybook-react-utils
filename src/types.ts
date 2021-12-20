@@ -58,7 +58,7 @@ export type ArgsTypesControl = ({
   [k in ControlsTypes]: {
     type: k
   } & ControlsOptions[k]
-})[ControlsTypes] & {
+})[ControlType] | {
   type: null
 }
 
