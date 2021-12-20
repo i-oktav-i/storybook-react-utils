@@ -208,3 +208,17 @@ const myWrapper: Wrapper<MyWrapperProps> = Elem => props => {
   );
 }
 ```
+
+### Exported types
+
+```ts
+
+export type {
+  Wrapper, /* Type for wrapper function */
+  StoryConfig, /* Story config type */
+  StoryArgTypes, /* Story config argTypes filed type */
+  ArgTypesControl, /* Type of control field in argTypes */
+  ControlType, /* Union of control type (except null) */
+  ControlsOptions, /* Map of ControlType and addition options  */
+};
+```

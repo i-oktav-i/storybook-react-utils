@@ -1,4 +1,4 @@
-import { ArgTypes as ArgsTypes, Story } from '@storybook/react';
+import { ArgTypes, Story } from '@storybook/react';
 import { JSXElementConstructor, VFC } from 'react';
 
 export type UnknownObj = Record<string, unknown>
@@ -16,7 +16,7 @@ export type MergeUnion<Union extends UnknownObj> = {
   [k in AllKeys<Union>]: PickType<Union, k>;
 }
 
-export type ControlsTypes =
+export type ControlType =
   'boolean' |
   'number' |
   'range' |
@@ -47,15 +47,15 @@ type FileOptions = {
   accept: string | string[]
 }
 
-interface ControlsOptions extends Record<ControlsTypes, UnknownObj> {
+export interface ControlsOptions extends Record<ControlType, UnknownObj> {
   number: NumbersOptions
   range: NumbersOptions
   color: ColorOptions
   date: FileOptions
 }
 
-export type ArgsTypesControl = ({
-  [k in ControlsTypes]: {
+export type ArgTypesControl = ({
+  [k in ControlType]: {
     type: k
   } & ControlsOptions[k]
 })[ControlType] | {
@@ -73,9 +73,9 @@ export type StoryParams<ComponentProps extends UnknownObj> = {
 
 /* Provides typings for ArgTypes story property */
 export type StoryArgTypes<ComponentProps extends UnknownObj> = {
-  [prop in keyof ComponentProps]?: ArgsTypes[string] & {
+  [prop in keyof ComponentProps]?: ArgTypes[string] & {
     defaultValue?: ComponentProps[prop]
-    control?: ArgsTypesControl
+    control?: ArgTypesControl
     table?: {
       disable?: boolean
       [x: string]: unknown
@@ -85,7 +85,7 @@ export type StoryArgTypes<ComponentProps extends UnknownObj> = {
 }
 
 /* Applying typings for stories */
-export type StoryConf<
+export type StoryConfig<
   ComponentProps extends UnknownObj,
   MergedComponentProps extends UnknownObj = MergeUnion<ComponentProps>
 > = Partial<Story<ComponentProps>> & {

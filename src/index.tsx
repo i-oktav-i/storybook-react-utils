@@ -13,12 +13,21 @@ import {
   UnknownObj,
   Falsy,
   StoryArgTypes,
-  StoryConf,
+  StoryConfig,
   Wrapper,
-  ArgsTypesControl,
+  ArgTypesControl,
+  ControlsOptions,
+  ControlType,
 } from './types';
 
-export type { Wrapper };
+export type {
+  Wrapper,
+  ArgTypesControl,
+  StoryConfig,
+  StoryArgTypes,
+  ControlsOptions,
+  ControlType,
+};
 
 /* Function to patch default story config with target */
 const merge = mergeWithCustomize({
@@ -58,7 +67,7 @@ const getStoryTemplate = <P extends UnknownObj>(
  */
 const getStory = <P extends UnknownObj>(
   template: Story<P>,
-  config: StoryConf<P> = {},
+  config: StoryConfig<P> = {},
 ) => {
   const story = template.bind({});
   Object.assign(story, config);
@@ -75,12 +84,12 @@ const getStory = <P extends UnknownObj>(
  */
 export const getStoryCreator = <P extends UnknownObj>(
   Component: VFC<P>,
-  defaultConfig: StoryConf<P> = {},
+  defaultConfig: StoryConfig<P> = {},
   displayName = Component.displayName,
 ) => {
   const t = getStoryTemplate(Component, displayName);
 
-  return (config: StoryConf<P> = {}) => getStory(t, merge(defaultConfig, config));
+  return (config: StoryConfig<P> = {}) => getStory(t, merge(defaultConfig, config));
 };
 
 /**
@@ -186,7 +195,7 @@ export const getCssVarWrapper = <
   Props extends UnknownObj = { [p in F]: string }
   >(
     name: F,
-    control: ArgsTypesControl = { type: 'text' },
+    control: ArgTypesControl = { type: 'text' },
   ): [Wrapper<Props>, StoryArgTypes<Props>] => [
     Elem => props => {
       const { [name]: value } = props;
