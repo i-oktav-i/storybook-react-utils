@@ -58,7 +58,9 @@ export type ArgsTypesControl = ({
   [k in ControlsTypes]: {
     type: k
   } & ControlsOptions[k]
-})[ControlsTypes]
+})[ControlsTypes] & {
+  type: null
+}
 
 /* Provides typings for controls field in story Parameters property */
 export type StoryParams<ComponentProps extends UnknownObj> = {
