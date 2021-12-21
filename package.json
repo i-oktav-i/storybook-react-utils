@@ -54,5 +54,10 @@
     "@storybook/react": ">= 6.3.0 < 7",
     "react": ">= 17.0.0",
     "react-redux": ">= 7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-redux": {
+      "optional": true
+    }
   }
 }
