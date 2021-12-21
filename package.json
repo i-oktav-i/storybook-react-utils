@@ -3,6 +3,9 @@
   "version": "1.0.10",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "engines": {
+    "node": "^16.0.0"
+  },
   "scripts": {
     "build": "tsc",
     "patch": "V=$(npm version patch); git push; git push origin ${V}"
@@ -54,10 +57,5 @@
     "@storybook/react": ">= 6.3.0 < 7",
     "react": ">= 17.0.0",
     "react-redux": ">= 7.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react-redux": {
-      "optional": true
-    }
   }
 }
