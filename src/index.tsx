@@ -5,7 +5,7 @@ import {
   useCallback,
   CSSProperties,
 } from 'react';
-import { useDispatch } from 'react-redux';
+import ReactRedux from 'react-redux';
 import { Story } from '@storybook/react';
 import { mergeWithCustomize } from 'webpack-merge';
 
@@ -115,7 +115,7 @@ export const getStorePropertyWrapper = <
     */
     init?: Parameters<typeof action>[0],
   ): Wrapper<{ [f in Field]: Parameters<typeof action>[0] }> => Elem => props => {
-    const dispatch = useDispatch();
+    const dispatch = ReactRedux.useDispatch();
     const [isDataLoaded, setIsDataLoaded] = useState(false);
 
     const setData = useCallback(async (args: Parameters<typeof action>[0]) => {
