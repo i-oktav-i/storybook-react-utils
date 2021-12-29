@@ -5,7 +5,8 @@ This package provides:
 * story Wrapper type
 * [wrapper](#containerWrapper) for stretchable components
 * [wrapper creator](#getStorePropertyWrapper) for Redux/Redux-thunk store action dispatching
-* wrapper for css variables managing
+* [wrapper creator](#getCssVarWrapper) for css variables managing
+* [wrapper creator](#getValueControlWrapper) for css variables managing
 * wrappers [composer](#compose).
 
 TS is not required
@@ -139,7 +140,7 @@ const isMobile = getStorePropertyWrapper(
   <code>getCssVarWrapper</code>
 </h3>
 
-getCssVarWrapper creates wrapper and argsTypes for css variable. By default controls type is `{type: 'text'}`, another control config can be provided with second argument
+Creates wrapper and argsTypes for css variable. By default controls type is `{type: 'text'}`, another control config can be provided with second argument
 
 ```ts
 import {
@@ -163,6 +164,49 @@ const getStory = getStoryCreator(wrapped, {
   },
 });
 
+```
+
+<h3 id="getValueControlWrapper">
+  <code>getValueControlWrapper</code>
+</h3>
+
+Creates a wrapper for components that have two-way data bindings
+
+```ts
+/* Component.tsx */
+type ComponentProps = {
+  inputValue: string
+  onInput: (newValue: string) => void
+}
+
+export const Component: VFC<ComponentProps> = ({
+  inputValue,
+  onInput,
+}) => {
+  return (
+    <input
+      value={inputValue}
+      onInput={onInput}
+    />
+  );
+};
+
+/* Component.stories.tsx */
+import { getValueControlWrapper, getStoryCreator } from 'storybook-react-utils';
+import { Component } from './Component';
+
+// Some code
+
+const valueControlWrapper = getValueControlWrapper(
+  '',
+  'inputValue', /* default value - 'value' */
+  'onInput', /* default value - 'onChange' */
+);
+
+const wrapped = valueControlWrapper(Component);
+const getStory = getStoryCreator(wrapped);
+
+export const Default = getStory();
 ```
 
 <h3 id="compose">

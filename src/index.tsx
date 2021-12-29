@@ -190,6 +190,11 @@ export const containerWrapper: Wrapper<ContainerProps> = Elem => props => {
 
 type CssVar = `--${string}`
 
+/**
+ * @param { string } name - name of css variable
+ * @param { ArgTypesControl } [control = { type: 'text' }] - control config
+ * @returns wrapper for component that have css params
+ */
 export const getCssVarWrapper = <
   F extends CssVar,
   Props extends UnknownObj = { [p in F]: string }
@@ -213,6 +218,33 @@ export const getCssVarWrapper = <
       [name]: { control },
     } as StoryArgTypes<Props>,
   ];
+
+/**
+ * @template T
+ * @param {T} initValue - initial value for field behind valuePropName
+ * @param {string} [valuePropName = 'value'] - name of field that will be controlled
+ * @param {string} [changeFunctionBPropName = 'onChange'] -
+ * name of field of function to change field behind valuePropName
+ * @returns wrapper for component with two-way data bindings
+ */
+export const getValueControlWrapper = <V, >(
+  initValue: V,
+  valuePropName = 'value',
+  changeFunctionBPropName = 'onChange',
+  // eslint-disable-next-line @typescript-eslint/ban-types
+): Wrapper<{}> => Elem => props => {
+    const [value, setValue] = useState(initValue);
+
+    const elemProps = {
+      ...props,
+      [valuePropName]:           value,
+      [changeFunctionBPropName]: setValue,
+    };
+
+    return (
+      <Elem {...elemProps} />
+    );
+  };
 
 /* eslint-disable max-len */
 export function compose<P1 extends UnknownObj>(w1: Wrapper<P1>): Wrapper<P1>
