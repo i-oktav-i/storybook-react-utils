@@ -3,10 +3,10 @@
 This package provides:
 * story creator with enhanced typings
 * story Wrapper type
-* [wrapper](#containerWrapper) for stretchable components
-* [wrapper creator](#getStorePropertyWrapper) for Redux/Redux-thunk store action dispatching
-* [wrapper creator](#getCssVarWrapper) for css variables managing
-* [wrapper creator](#getValueControlWrapper) for css variables managing
+* [containerWrapper](#containerWrapper) wrapper for stretchable components
+* [getStorePropertyWrapper](#getStorePropertyWrapper) wrapper creator for Redux/Redux-thunk store action dispatching
+* [getCssVarWrapper](#getCssVarWrapper) wrapper creator for css variables managing
+* [getValueControlWrapper](#getValueControlWrapper) wrapper creator for controlled value
 * wrappers [composer](#compose).
 
 TS is not required
