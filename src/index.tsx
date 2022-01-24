@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useDispatch } from 'react-redux';
 import { Story } from '@storybook/react';
-import { mergeWithCustomize } from 'webpack-merge';
+import { customizeObject, mergeWithCustomize } from 'webpack-merge';
 
 import {
   UnknownObj,
@@ -30,17 +30,11 @@ export type {
 };
 
 /* Function to patch default story config with target */
-const merge = mergeWithCustomize({
-  customizeObject(first, second, key) {
-    if (key === 'args' || key === 'argTypes') {
-      return {
-        ...first,
-        ...second,
-      };
-    }
-
-    return undefined;
-  },
+const merge = mergeWithCustomize<Record<string, unknown>>({
+  customizeObject: customizeObject({
+    args:     'replace',
+    argTypes: 'replace',
+  }),
 });
 
 /**
@@ -88,6 +82,11 @@ export const getStoryCreator = <P extends UnknownObj>(
   displayName = Component.displayName,
 ) => {
   const t = getStoryTemplate(Component, displayName);
+
+  /* eslint-disable no-param-reassign */
+  defaultConfig.args ||= {};
+  defaultConfig.argTypes ||= {};
+  /* eslint-enable no-param-reassign */
 
   return (config: StoryConfig<P> = {}) => getStory(t, merge(defaultConfig, config));
 };
