@@ -219,8 +219,6 @@ export const getCssVarWrapper = <
   ];
 
 /**
- * @template T
- * @param {T} initValue - initial value for field behind valuePropName
  * @param {string} [valuePropName = 'value'] - name of field that will be controlled
  * @param {string} [changeFunctionBPropName = 'onChange'] -
  * name of field of function to change field behind valuePropName
