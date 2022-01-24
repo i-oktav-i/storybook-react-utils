@@ -171,6 +171,7 @@ const getStory = getStoryCreator(wrapped, {
 </h3>
 
 Creates a wrapper for components that have two-way data bindings
+If the value is changed using the control panel, it will be overwritten
 
 ```ts
 /* Component.tsx */
@@ -198,7 +199,6 @@ import { Component } from './Component';
 // Some code
 
 const valueControlWrapper = getValueControlWrapper(
-  '',
   'inputValue', /* default value - 'value' */
   'onInput', /* default value - 'onChange' */
 );

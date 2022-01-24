@@ -226,24 +226,28 @@ export const getCssVarWrapper = <
  * name of field of function to change field behind valuePropName
  * @returns wrapper for component with two-way data bindings
  */
-export const getValueControlWrapper = <V, >(
-  initValue: V,
+export const getValueControlWrapper = (
   valuePropName = 'value',
   changeFunctionBPropName = 'onChange',
   // eslint-disable-next-line @typescript-eslint/ban-types
 ): Wrapper<{}> => Elem => props => {
-    const [value, setValue] = useState(initValue);
+  const { [valuePropName]: providedValue } = props;
+  const [value, setValue] = useState(providedValue);
 
-    const elemProps = {
-      ...props,
-      [valuePropName]:           value,
-      [changeFunctionBPropName]: setValue,
-    };
+  useEffect(() => {
+    setValue(providedValue);
+  }, [providedValue]);
 
-    return (
-      <Elem {...elemProps} />
-    );
+  const elemProps = {
+    ...props,
+    [valuePropName]:           value,
+    [changeFunctionBPropName]: setValue,
   };
+
+  return (
+    <Elem {...elemProps} />
+  );
+};
 
 /* eslint-disable max-len */
 export function compose<P1 extends UnknownObj>(w1: Wrapper<P1>): Wrapper<P1>
