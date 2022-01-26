@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useDispatch } from 'react-redux';
 import { Story } from '@storybook/react';
-import { customizeObject, mergeWithCustomize } from 'webpack-merge';
+import { mergeWithCustomize } from 'webpack-merge';
 
 import {
   UnknownObj,
@@ -30,11 +30,17 @@ export type {
 };
 
 /* Function to patch default story config with target */
-const merge = mergeWithCustomize<Record<string, unknown>>({
-  customizeObject: customizeObject({
-    'args.*':     'replace',
-    'argTypes.*': 'replace',
-  }),
+export const merge = mergeWithCustomize<Record<string, unknown>>({
+  customizeObject: (first, second, key) => {
+    if (['args', 'argTypes'].includes(key)) {
+      return {
+        ...(first || {}),
+        ...(second || {}),
+      };
+    }
+
+    return undefined;
+  },
 });
 
 /**
