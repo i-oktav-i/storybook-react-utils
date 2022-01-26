@@ -30,7 +30,7 @@ export type {
 };
 
 /* Function to patch default story config with target */
-export const merge = mergeWithCustomize<Record<string, unknown>>({
+const merge = mergeWithCustomize<Record<string, unknown>>({
   customizeObject: (first, second, key) => {
     if (['args', 'argTypes'].includes(key)) {
       return {
