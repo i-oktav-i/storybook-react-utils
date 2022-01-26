@@ -32,8 +32,8 @@ export type {
 /* Function to patch default story config with target */
 const merge = mergeWithCustomize<Record<string, unknown>>({
   customizeObject: customizeObject({
-    args:     'replace',
-    argTypes: 'replace',
+    'args.*':     'replace',
+    'argTypes.*': 'replace',
   }),
 });
 
