@@ -1,5 +1,8 @@
 # storybook-react-utils
 
+[![codecov](https://codecov.io/gh/i-oktav-i/storybook-react-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/i-oktav-i/storybook-react-utils)
+
+
 This package provides:
 * story creator with enhanced typings
 * story Wrapper type
