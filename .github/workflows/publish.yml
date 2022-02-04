@@ -7,8 +7,6 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    env:
-      IS_CI: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -21,8 +19,6 @@ jobs:
   build:
     needs: check
     runs-on: ubuntu-latest
-    env:
-      IS_CI: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
