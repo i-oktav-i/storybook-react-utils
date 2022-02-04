@@ -9,7 +9,8 @@
   "scripts": {
     "build": "rollup -c --configPlugin typescript",
     "test": "jest",
-    "patch": "V=$(npm version patch); git push; git push origin ${V}"
+    "patch": "V=$(npm version patch); git push; git push origin ${V}",
+    "patch:rc": "V=$(npm version prerelease --preid rc); git push; git push origin ${V}"
   },
   "author": "Taranenko Andrei <i_oktav_i@mail.ru>",
   "license": "ISC",
