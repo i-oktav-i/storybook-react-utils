@@ -8,10 +8,10 @@
 This package provides:
 * story creator with enhanced typings
 * story Wrapper type
-* [containerWrapper](#containerWrapper) wrapper for stretchable components
-* [getStorePropertyWrapper](#getStorePropertyWrapper) wrapper creator for Redux/Redux-thunk store action dispatching
-* [getCssVarWrapper](#getCssVarWrapper) wrapper creator for css variables managing
-* [getValueControlWrapper](#getValueControlWrapper) wrapper creator for controlled value
+* [containerWrapper](#container-wrapper) wrapper for stretchable components
+* [getStorePropertyWrapper](#get-store-property-wrapper) wrapper creator for Redux/Redux-thunk store action dispatching
+* [getCssVarWrapper](#get-css-var-wrapper) wrapper creator for css variables managing
+* [getValueControlWrapper](#get-value-control-wrapper) wrapper creator for controlled value
 * wrappers [composer](#compose).
 
 TS is not required
@@ -77,7 +77,7 @@ export const AnotherComponentStory = getStory({
 storybook-react-utils provides one story wrapper and wrappers creator for dispatching store actions with story controls
 
 
-<h3 id="containerWrapper">
+<h3 id="container-wrapper">
   <code>containerWrapper</code>
 </h3>
 
@@ -124,7 +124,7 @@ const getStory = getStoryCreator(wrapped, {
 });
 ```
 
-<h3 id="getStorePropertyWrapper">
+<h3 id="get-store-property-wrapper">
   <code>getStorePropertyWrapper</code>
 </h3>
 
@@ -141,7 +141,7 @@ const isMobile = getStorePropertyWrapper(
 
 ```
 
-<h3 id="getCssVarWrapper">
+<h3 id="get-css-var-wrapper">
   <code>getCssVarWrapper</code>
 </h3>
 
@@ -171,7 +171,7 @@ const getStory = getStoryCreator(wrapped, {
 
 ```
 
-<h3 id="getValueControlWrapper">
+<h3 id="get-value-control-wrapper">
   <code>getValueControlWrapper</code>
 </h3>
 
