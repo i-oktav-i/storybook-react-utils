@@ -8,7 +8,10 @@
   },
   "scripts": {
     "build": "rollup -c --configPlugin typescript",
+    "eslint": "eslint './**/*{ts,tsx,js}'",
+    "tsc": "tsc --noEmit",
     "test": "jest",
+    "check": "npm run eslint && npm run tsc && npm run test",
     "patch": "V=$(npm version patch); git push; git push origin ${V}",
     "patch:rc": "V=$(npm version prerelease --preid rc); git push; git push origin ${V}"
   },
