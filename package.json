@@ -1,6 +1,6 @@
 {
   "name": "storybook-react-utils",
-  "version": "1.0.19",
+  "version": "1.0.20-rc.7",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "engines": {
@@ -8,8 +8,12 @@
   },
   "scripts": {
     "build": "rollup -c --configPlugin typescript",
+    "eslint": "eslint './**/*{ts,tsx,js}'",
+    "tsc": "tsc --noEmit",
     "test": "jest",
-    "patch": "V=$(npm version patch); git push; git push origin ${V}"
+    "check": "npm run eslint && npm run tsc && npm run test",
+    "patch": "V=$(npm version patch); git push; git push origin ${V}",
+    "patch:rc": "V=$(npm version prerelease --preid rc); git push; git push origin ${V}"
   },
   "author": "Taranenko Andrei <i_oktav_i@mail.ru>",
   "license": "ISC",
