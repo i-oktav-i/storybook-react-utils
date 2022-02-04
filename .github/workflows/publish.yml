@@ -35,6 +35,8 @@ jobs:
   collect_coverage:
     needs: build
     runs-on: ubuntu-latest
+    env:
+      IS_CI: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
