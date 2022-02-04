@@ -12,7 +12,7 @@ const config: Config.InitialOptions = {
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters:  process.env.IS_CI === 'true'
     ? [
-      'clover',
+      'json',
     ]
     : [
       'text',
