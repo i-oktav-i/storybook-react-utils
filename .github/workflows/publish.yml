@@ -5,18 +5,7 @@ on:
       - "*"
 
 jobs:
-  setup_node:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: 'npm'
-      - run: npm ci
-
   check:
-    needs: setup_node
     runs-on: ubuntu-latest
     env:
       IS_CI: true
@@ -26,6 +15,7 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
+      - run: npm ci
       - run: npm run check
 
   build:
@@ -39,6 +29,7 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
+      - run: npm ci
       - run: npm run build
 
   collect_coverage:
@@ -46,6 +37,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm ci
       - run: npm run test
       - uses: codecov/codecov-action@v2
         with:
@@ -62,6 +58,7 @@ jobs:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
+      - run: npm ci
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
