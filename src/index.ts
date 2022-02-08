@@ -8,7 +8,7 @@ export type {
 } from './types';
 
 export { getStoryCreator } from './getStoryCreator';
-export { containerWrapper, containerWrapperArgTypes } from 'wrappers/container';
+export { containerWrapper, containerWrapperArgTypes } from './wrappers/container';
 export { getCssVarWrapper } from './wrappers/cssVar';
 export { getStorePropertyWrapper } from './wrappers/storeProperty';
 export { getValueControlWrapper } from './wrappers/valueControl';
