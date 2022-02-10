@@ -1,4 +1,4 @@
-import { Falsy, UnknownObj, Wrapper } from 'types';
+import { Falsy, UnknownObj, Wrapper } from './types';
 
 /* eslint-disable max-len */
 export function compose<P1 extends UnknownObj>(w1: Wrapper<P1>): Wrapper<P1>

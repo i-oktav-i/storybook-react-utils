@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { render } from '@testing-library/react';
 
-import { StoryConfig } from 'types';
+import { StoryConfig } from './types';
 
 import { getStoryCreator } from './getStoryCreator';
 
