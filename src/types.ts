@@ -93,6 +93,6 @@ export type StoryConfig<
   argTypes?: StoryArgTypes<MergedComponentProps>
 }
 
-export type Wrapper<E extends UnknownObj> = <ComponentProps extends Record<string, unknown>>(
+export type Wrapper<E extends UnknownObj, O extends string = never> = <ComponentProps extends Record<string, unknown>>(
   Elem: JSXElementConstructor<ComponentProps>
-) => VFC<ComponentProps & E>
+) => VFC<Omit<ComponentProps, O> & E>

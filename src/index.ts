@@ -12,4 +12,5 @@ export { containerWrapper, containerWrapperArgTypes } from './wrappers/container
 export { getCssVarWrapper } from './wrappers/cssVar';
 export { getStorePropertyWrapper } from './wrappers/storeProperty';
 export { getValueControlWrapper } from './wrappers/valueControl';
+export { getPropApplicatorWrapper } from './wrappers/propApplicator';
 export { compose } from './compose';
