@@ -1,9 +1,8 @@
 import { ComponentProps } from 'react';
 
-import { ArgTypesControl } from '../..';
-
 import {
   Wrapper,
+  ArgTypesControl,
 } from '../../types';
 
 export const getPropApplicatorWrapper = <
