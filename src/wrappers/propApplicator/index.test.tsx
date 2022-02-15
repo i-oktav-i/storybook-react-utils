@@ -17,7 +17,7 @@ const TestComp: VFC<TestCompProps> = ({
 );
 
 const applicableValue = 'applicable value';
-const valueApplicator = getPropApplicatorWrapper('value', applicableValue);
+const [valueApplicator, argTypes] = getPropApplicatorWrapper('value', applicableValue);
 
 const Wrapped = valueApplicator(TestComp);
 
@@ -34,5 +34,9 @@ describe('props applier', () => {
     rerender(<Wrapped value />);
 
     expect(getByText(applicableValue)).toBeInTheDocument();
+  });
+
+  it('arg types test', () => {
+    expect(argTypes).toEqual({ value: { type: 'boolean' } });
   });
 });
