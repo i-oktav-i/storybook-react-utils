@@ -93,6 +93,13 @@ export type StoryConfig<
   argTypes?: StoryArgTypes<MergedComponentProps>
 }
 
-export type Wrapper<E extends UnknownObj, O extends string = never> = <ComponentProps extends Record<string, unknown>>(
+export type Wrapper<
+  Enhance extends UnknownObj,
+  ToOmit extends string | void = void,
+  /* Solve problem that type provided in O becomes string when passing in Omit */
+  ToOmitCopy = ToOmit,
+> = <ComponentProps extends Record<string, unknown>>(
   Elem: JSXElementConstructor<ComponentProps>
-) => VFC<Omit<ComponentProps, O> & E>
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+) => ToOmitCopy extends string ? VFC<Omit<ComponentProps, ToOmit> & Enhance> : VFC<ComponentProps & Enhance>

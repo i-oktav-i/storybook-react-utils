@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-import { StoryArgTypes, Wrapper } from '../../types';
+import { StoryArgTypes, Wrapper } from 'typings/types';
 
 type ContainerProps = {
   containerWidth: number,

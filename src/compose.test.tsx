@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react';
 import { VFC } from 'react';
 
-import { getCssVarWrapper } from './wrappers/cssVar';
-
-import { compose } from './compose';
+import { getCssVarWrapper } from 'wrappers/cssVar';
+import { compose } from 'compose';
 
 const [wrapper1] = getCssVarWrapper('--test-1');
 const [wrapper2] = getCssVarWrapper('--test-2');

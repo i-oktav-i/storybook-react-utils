@@ -1,6 +1,6 @@
 {
   "name": "storybook-react-utils",
-  "version": "1.0.26",
+  "version": "1.0.27-rc.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "engines": {
@@ -58,6 +58,7 @@
     "jest": "^27.4.7",
     "rollup": "^2.67.0",
     "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-dts": "^4.1.0",
     "stylelint": "^13.13.1",
     "stylelint-config-css-modules": "^2.3.0",
     "stylelint-config-htmlacademy": "^0.1.12",

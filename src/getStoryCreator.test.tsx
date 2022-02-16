@@ -1,9 +1,9 @@
 import { VFC } from 'react';
 import { render } from '@testing-library/react';
 
-import { StoryConfig } from './types';
+import { StoryConfig } from 'typings/types';
 
-import { getStoryCreator } from './getStoryCreator';
+import { getStoryCreator } from 'getStoryCreator';
 
 type TestCompProps = {
   a?: string,

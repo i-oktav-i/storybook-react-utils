@@ -5,12 +5,12 @@ export type {
   ArgTypesControl,
   ControlsOptions,
   ControlType,
-} from './types';
+} from 'typings/types';
 
-export { getStoryCreator } from './getStoryCreator';
-export { containerWrapper, containerWrapperArgTypes } from './wrappers/container';
-export { getCssVarWrapper } from './wrappers/cssVar';
-export { getStorePropertyWrapper } from './wrappers/storeProperty';
-export { getValueControlWrapper } from './wrappers/valueControl';
-export { getPropApplicatorWrapper } from './wrappers/propApplicator';
-export { compose } from './compose';
+export { containerWrapper, containerWrapperArgTypes } from 'wrappers/container';
+export { getCssVarWrapper } from 'wrappers/cssVar';
+export { getStorePropertyWrapper } from 'wrappers/storeProperty';
+export { getValueControlWrapper } from 'wrappers/valueControl';
+export { getPropApplicatorWrapper } from 'wrappers/propApplicator';
+export { getStoryCreator } from 'getStoryCreator';
+export { compose } from 'compose';

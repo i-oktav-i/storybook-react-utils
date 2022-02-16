@@ -1,7 +1,9 @@
+import { RollupOptions } from 'rollup';
 import typescriptPlugin from '@rollup/plugin-typescript';
 import cleaner from 'rollup-plugin-cleaner';
+import dts from 'rollup-plugin-dts';
 
-const config = {
+const config: RollupOptions = {
   input:  './src/index.ts',
   output: {
     dir:                 './build',
@@ -26,4 +28,19 @@ const config = {
   ],
 };
 
-export default config;
+const dtsConf: RollupOptions = {
+  input:  './src/index.ts',
+  output: {
+    dir:    './build',
+    format: 'esm',
+  },
+  plugins: [
+    dts({
+      compilerOptions: {
+        baseUrl: './src',
+      },
+    }),
+  ],
+};
+
+export default [config, dtsConf];
