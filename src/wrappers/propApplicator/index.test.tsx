@@ -37,6 +37,6 @@ describe('props applier', () => {
   });
 
   it('arg types test', () => {
-    expect(argTypes).toEqual({ value: { type: 'boolean' } });
+    expect(argTypes).toEqual({ value: { control: { type: 'boolean' } } });
   });
 });

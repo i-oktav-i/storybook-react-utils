@@ -2,27 +2,34 @@ import { ComponentProps } from 'react';
 
 import {
   Wrapper,
-  ArgTypesControl,
+  StoryArgTypes,
+  UnknownObj,
 } from '../../types';
 
 export const getPropApplicatorWrapper = <
-  V,
-  P extends string
->(propName: P, value: V): [
-    Wrapper<{ [p in P]?: boolean }, P>,
-    {[p in P]: ArgTypesControl},
-] => [
-    Elem => props => {
-      const { [propName]: needApply = false, ...rest } = props;
+  Value,
+  PropName extends string,
+  Props extends UnknownObj = { [p in PropName]?: boolean },
+>(propName: PropName, value: Value): [
+    Wrapper<Props, PropName>,
+    StoryArgTypes<Props>,
+] => {
+  const wrapper: Wrapper<Props, PropName> = Elem => props => {
+    const { [propName]: needApply = false, ...rest } = props;
 
-      return (
-        <Elem
-          {...{
-            ...rest,
-            [propName]: needApply ? value : undefined,
-          } as ComponentProps<typeof Elem>}
-        />
-      );
-    },
-    { [propName]: { type: 'boolean' } } as {[p in P]: ArgTypesControl},
-  ];
+    return (
+      <Elem
+        {...{
+          ...rest,
+          [propName]: needApply ? value : undefined,
+        } as ComponentProps<typeof Elem>}
+      />
+    );
+  };
+
+  const argType: StoryArgTypes<Props> = {
+    [propName]: { control: { type: 'boolean' } },
+  } as StoryArgTypes<Props>;
+
+  return [wrapper, argType];
+};
