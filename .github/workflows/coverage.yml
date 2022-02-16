@@ -2,7 +2,8 @@ name: Coverage
 on:
   create:
     tags:
-      - "!*-rc*"
+      - '*'
+      - '!*-rc*'
 
 jobs:
   collect_coverage:
