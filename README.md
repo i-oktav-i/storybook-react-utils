@@ -12,6 +12,7 @@ This package provides:
 * [getStorePropertyWrapper](#get-store-property-wrapper) wrapper creator for Redux/Redux-thunk store action dispatching
 * [getCssVarWrapper](#get-css-var-wrapper) wrapper creator for css variables managing
 * [getValueControlWrapper](#get-value-control-wrapper) wrapper creator for controlled value
+* [getPropApplicatorWrapper](#get-prop-applicator-wrapper) wrapper creator for controlled value
 * wrappers [composer](#compose).
 
 TS is not required
@@ -214,6 +215,30 @@ const getStory = getStoryCreator(wrapped);
 export const Default = getStory();
 ```
 
+<h3 id="get-prop-applicator-wrapper">
+  <code>getPropApplicatorWrapper</code>
+</h3>
+
+Creates a wrapper that replace prop with boolean prop, and apply provided value when it's true of `undefined` when it's false
+
+```tsx
+import { getPropApplicatorWrapper } from 'storybook-react-utils';
+import { Component } from './Component';
+
+const iconApplicator = getPropApplicatorWrapper('icon', (
+  <div>
+    icon
+  </div>
+));
+
+const wrapped = iconApplicator(Component);
+
+const getStory = getStoryCreator(wrapped);
+
+export const Default = getStory({args: {icon: true}});
+
+```
+
 <h3 id="compose">
   <code>compose</code>
 </h3>
@@ -241,14 +266,23 @@ const wrapped = compose(
 
 Type of wrapper function to enhance props types for controls addon
 
-```ts
+```tsx
 import { Wrapper } from 'storybook-react-utils';
 
 type MyWrapperProps = {
   /* Wrapper props */
 }
 
-const myWrapper: Wrapper<MyWrapperProps> = Elem => props => {
+type PropsToOmit = 'prop1' | 'prop2'
+
+const myWrapper: Wrapper<
+  MyWrapperProps, 
+  /* PropsToOmit, // if need to omit props */
+> = (
+  Elem // Component to wrap
+) => (
+  props // will be equal tp (Omit<ComponentProps<typeof Elem>, PropsToOmit> & MyWrapperProps)
+) => {
   /* Code here */
 
   return (

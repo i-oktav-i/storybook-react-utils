@@ -1,6 +1,9 @@
 name: Coverage
 on:
   push:
+    tags:
+      - '*'
+      - '!*-rc*'
 
 jobs:
   collect_coverage:
