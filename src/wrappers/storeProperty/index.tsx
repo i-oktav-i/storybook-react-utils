@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Wrapper } from '../../types';
+import { Wrapper } from 'typings/types';
 
 /**
  *

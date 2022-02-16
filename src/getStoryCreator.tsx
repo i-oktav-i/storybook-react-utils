@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import { Story } from '@storybook/react';
 import { mergeWithCustomize } from 'webpack-merge';
 
-import { UnknownObj, StoryConfig } from './types';
+import { UnknownObj, StoryConfig } from 'typings/types';
 
 /* Function to patch default story config with target */
 const merge = mergeWithCustomize<Record<string, unknown>>({

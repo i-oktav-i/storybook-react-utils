@@ -58,6 +58,7 @@
     "jest": "^27.4.7",
     "rollup": "^2.67.0",
     "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-dts": "^4.1.0",
     "stylelint": "^13.13.1",
     "stylelint-config-css-modules": "^2.3.0",
     "stylelint-config-htmlacademy": "^0.1.12",

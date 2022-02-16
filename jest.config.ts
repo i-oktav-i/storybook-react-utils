@@ -18,6 +18,10 @@ const config: Config.InitialOptions = {
       'text',
     ],
   // The test environment that will be used for testing
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment:   'jest-environment-jsdom',
+  moduleDirectories: [
+    './node_modules/',
+    './src/',
+  ],
 };
 export default config;

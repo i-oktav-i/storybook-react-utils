@@ -1,6 +1,6 @@
 import {
   ArgTypesControl, StoryArgTypes, UnknownObj, Wrapper,
-} from '../../types';
+} from 'typings/types';
 
 type CssVar = `--${string}`
 

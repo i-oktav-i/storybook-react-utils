@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { VFC } from 'react';
 
-import { ArgTypesControl } from '../../types';
+import { ArgTypesControl } from 'typings/types';
 
 import { getCssVarWrapper } from '.';
 

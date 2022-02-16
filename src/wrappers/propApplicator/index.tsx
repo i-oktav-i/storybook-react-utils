@@ -4,7 +4,7 @@ import {
   Wrapper,
   StoryArgTypes,
   UnknownObj,
-} from '../../types';
+} from 'typings/types';
 
 export const getPropApplicatorWrapper = <
   Value,

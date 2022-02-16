@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Wrapper } from '../../types';
+import { Wrapper } from 'typings/types';
 
 /**
  * @param {string} [valuePropName = 'value'] - name of field that will be controlled
