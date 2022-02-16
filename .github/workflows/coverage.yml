@@ -1,6 +1,6 @@
 name: Coverage
 on:
-  create:
+  push:
     tags:
       - '*'
       - '!*-rc*'
