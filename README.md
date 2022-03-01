@@ -16,10 +16,6 @@ This package provides:
 * [refWrapper](#ref-wrapper) wrapper creator for controlled value
 * wrappers [composer](#compose).
 
-TS is not required
-
----
-
 ## How to use
 
 ```ts
@@ -332,3 +328,7 @@ export type {
   ControlsOptions, /* Map of ControlType and addition options  */
 };
 ```
+
+## TODO
+
+* Allow provide `forwardRef()` components as wrapper argument
