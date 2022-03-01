@@ -103,7 +103,7 @@ export type Wrapper<
   ToOmit extends string | void = void,
   /* Solve problem that type provided in O becomes string when passing in Omit */
   ToOmitCopy = ToOmit,
-> = <ComponentProps extends Record<string, unknown>>(
+> = <ComponentProps extends Record<string, any>>(
     Elem: JSXElementConstructor<ComponentProps> |
       ForwardRefExoticComponent<ComponentProps & RefAttributes<unknown>>
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
