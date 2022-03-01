@@ -1,5 +1,8 @@
 import { ArgTypes, Story } from '@storybook/react';
-import { JSXElementConstructor, VFC } from 'react';
+import {
+  JSXElementConstructor,
+  VFC,
+} from 'react';
 
 export type UnknownObj = Record<string, unknown>
 export type Falsy = false | null | undefined
@@ -98,7 +101,7 @@ export type Wrapper<
   ToOmit extends string | void = void,
   /* Solve problem that type provided in O becomes string when passing in Omit */
   ToOmitCopy = ToOmit,
-> = <ComponentProps extends Record<string, unknown>>(
+> = <ComponentProps extends UnknownObj>(
   Elem: JSXElementConstructor<ComponentProps>
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
