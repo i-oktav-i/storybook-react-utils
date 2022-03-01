@@ -1,8 +1,6 @@
 import { ArgTypes, Story } from '@storybook/react';
 import {
-  ForwardRefExoticComponent,
   JSXElementConstructor,
-  RefAttributes,
   VFC,
 } from 'react';
 
@@ -103,9 +101,8 @@ export type Wrapper<
   ToOmit extends string | void = void,
   /* Solve problem that type provided in O becomes string when passing in Omit */
   ToOmitCopy = ToOmit,
-> = <ComponentProps extends Record<string, any>>(
-    Elem: JSXElementConstructor<ComponentProps> |
-      ForwardRefExoticComponent<ComponentProps & RefAttributes<unknown>>
+> = <ComponentProps extends UnknownObj>(
+  Elem: JSXElementConstructor<ComponentProps>
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
 ) => ToOmitCopy extends string ? VFC<Omit<ComponentProps, ToOmit> & Enhance> : VFC<ComponentProps & Enhance>
