@@ -2,8 +2,8 @@
 
 [![codecov](https://codecov.io/gh/i-oktav-i/storybook-react-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/i-oktav-i/storybook-react-utils)
 [![GitHub license](https://img.shields.io/github/license/i-oktav-i/storybook-react-utils)](https://github.com/i-oktav-i/storybook-react-utils/blob/master/LICENSE)
-![npm](https://img.shields.io/npm/dm/storybook-react-utils)
-![npm](https://img.shields.io/npm/v/storybook-react-utils)
+[![npm](https://img.shields.io/npm/dm/storybook-react-utils)](https://www.npmjs.com/package/storybook-react-utils)
+[![npm](https://img.shields.io/npm/v/storybook-react-utils)](https://www.npmjs.com/package/storybook-react-utils)
 
 This package provides:
 * story creator with enhanced typings
