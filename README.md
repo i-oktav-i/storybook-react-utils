@@ -14,6 +14,7 @@ This package provides:
 * [getValueControlWrapper](#get-value-control-wrapper) wrapper creator for controlled value
 * [getPropApplicatorWrapper](#get-prop-applicator-wrapper) wrapper creator for controlled value
 * [refWrapper](#ref-wrapper) wrapper creator for controlled value
+* [getPropFlatterWrapper](get-prop-flatter-wrapper) wrapper creator for controlled value
 * wrappers [composer](#compose).
 
 ## How to use
@@ -260,6 +261,56 @@ const wrapped = refWrapper(TestComp);
 
 const getStory = getStoryCreator(wrapped);
 const Default = getStory();
+```
+
+<h3 id="get-prop-flatter-wrapper">
+  <code>getPropFlatterWrapper</code>
+</h3>
+
+This wrapper replace object prop with its fields. NOTE: because of typing restrictions, it is required to call the function twice. First time without arguments and with generic param, and second time just with arguments.
+
+```tsx
+/* ./Component.tsx */
+import { VFC } from 'react';
+
+export type ComponentProps = {
+  objProp: {
+    first: string
+    second: number
+    third: boolean
+  }
+  third: any
+}
+
+export const Component: VFC<ComponentProps> = props => {/* code */};
+
+/* ./Component.stories.tsx */
+import {
+  getStoryCreator,
+  getPropFlatterWrapper,
+} from 'storybook-react-utils';
+
+import { Component, ComponentProps } from './Component';
+
+const objPropWrapper = getPropFlatterWrapper<ComponentProps['objProp']>()(
+  'objProp', /* name of prop, that need to replace */
+  {
+    first: true, /* in controls will have same name */
+    second: true,
+    third: 'thirdProxy', /* in controls with have 'thirdProxy' to avoid identical names  */
+  },
+);
+
+const wrapped = objPropWrapper(Component);
+const getStory = getStoryCreator(wrapped, {
+  args: {
+    first: '',
+    second: 0,
+    thirdProxy: true,
+    third: {},
+  }
+});
+
 ```
 
 <h3 id="compose">
