@@ -13,5 +13,6 @@ export { getStorePropertyWrapper } from 'wrappers/storeProperty';
 export { getValueControlWrapper } from 'wrappers/valueControl';
 export { getPropApplicatorWrapper } from 'wrappers/propApplicator';
 export { refWrapper } from 'wrappers/ref';
+export { getPropFlatterWrapper } from 'wrappers/propFlatter';
 export { getStoryCreator } from 'getStoryCreator';
 export { compose } from 'compose';

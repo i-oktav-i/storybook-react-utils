@@ -1,6 +1,6 @@
 {
   "name": "storybook-react-utils",
-  "version": "1.0.29",
+  "version": "1.0.30-rc.3",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "engines": {
