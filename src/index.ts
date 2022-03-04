@@ -14,5 +14,6 @@ export { getValueControlWrapper } from 'wrappers/valueControl';
 export { getPropApplicatorWrapper } from 'wrappers/propApplicator';
 export { refWrapper } from 'wrappers/ref';
 export { getPropFlatterWrapper } from 'wrappers/propFlatter';
+export { getSelectorWrapper } from 'wrappers/selector';
 export { getStoryCreator } from 'getStoryCreator';
 export { compose } from 'compose';

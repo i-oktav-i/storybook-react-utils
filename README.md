@@ -12,9 +12,10 @@ This package provides:
 * [getStorePropertyWrapper](#get-store-property-wrapper) wrapper creator for Redux/Redux-thunk store action dispatching
 * [getCssVarWrapper](#get-css-var-wrapper) wrapper creator for css variables managing
 * [getValueControlWrapper](#get-value-control-wrapper) wrapper creator for controlled value
-* [getPropApplicatorWrapper](#get-prop-applicator-wrapper) wrapper creator for controlled value
-* [refWrapper](#ref-wrapper) wrapper creator for controlled value
-* [getPropFlatterWrapper](#get-prop-flatter-wrapper) wrapper creator for controlled value
+* [getPropApplicatorWrapper](#get-prop-applicator-wrapper) wrapper creator for prop applicator
+* [refWrapper](#ref-wrapper) wrapper that provides `ref` prop
+* [getPropFlatterWrapper](#get-prop-flatter-wrapper) wrapper creator that replace object prop with its fields __(or fields proxies)__
+* [getSelectorWrapper](#get-selector-wrapper) wrapper creator for providing props from redux store
 * wrappers [composer](#compose).
 
 ## How to use
@@ -366,6 +367,25 @@ const wrapped = compose(
   valueThirdObjWrapper,
 )(Component);
 
+```
+
+
+<h3 id="get-selector-wrapper">
+  <code>getSelectorWrapper</code>
+</h3>
+
+creates wrapper that gets value from redux store and provide into a component as prop
+
+```tsx
+import { getSelectorWrapper } from 'storybook-react-utils';
+import { Component } from './Component';
+
+const valueWrapper = getSelectorWrapper(
+  'propName', /* Name of prop to provide stored value */
+  (store/*: AppStore */) => store.value, /* getter from store, provides into useSelector */
+);
+
+const wrapped = valueWrapper(Component);
 ```
 
 
