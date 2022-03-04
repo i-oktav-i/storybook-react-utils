@@ -99,7 +99,7 @@ export type StoryConfig<
 export type Wrapper<
   Enhance extends UnknownObj,
   ToOmit extends string | void = void,
-  /* Solve problem that type provided in O becomes string when passing in Omit */
+  /* Solve problem that type provided in ToOmit becomes string when passing in Omit */
   ToOmitCopy = ToOmit,
 > = <ComponentProps extends UnknownObj>(
   Elem: JSXElementConstructor<ComponentProps>
