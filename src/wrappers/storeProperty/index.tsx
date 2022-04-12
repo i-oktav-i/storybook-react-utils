@@ -39,12 +39,11 @@ export function getStorePropertyWrapper<
       setIsDataLoaded(true);
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-      const { [fieldName]: field } = props;
+    const { [fieldName]: field } = props;
 
+    useEffect(() => {
       setData(field);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props]);
+    }, [field]);
 
     useEffect(() => {
       if (needReset) {
